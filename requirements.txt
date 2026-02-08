@@ -1,0 +1,16 @@
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.6.1
+PyPDF2>=3.0.1
+scikit-learn>=1.4.0
+numpy>=1.26.3
+python-dotenv>=1.0.1
+requests>=2.31.0
+langchain>=0.1.0
+langchain-community>=0.0.10
+langchain-text-splitters>=0.0.1
+faiss-cpu>=1.7.4
+pdfplumber>=0.11.0
+orjson>=3.10.0        # fast / strict JSON parsing
+json-repair>=0.10.0   # fixes most LLM JSON issues in one call
+tenacity>=8.2.0       # clean @retry decorator
