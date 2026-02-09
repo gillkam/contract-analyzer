@@ -52,13 +52,6 @@ async def analyze(file: UploadFile = File(...), session_id: str | None = None):
             ))
     return AnalyzeResponse(session_id=sid, items=items)
 
-@app.post("/chat", response_model=ChatResponse)
-async def chat(req: ChatRequest):
-    sid = req.session_id or str(uuid.uuid4())
-    answer = "Bonus chat not implemented in this Ollama-only starter."
-    return ChatResponse(session_id=sid, answer=answer)
-
-
 # ============== RAG Chat Endpoints ==============
 
 @app.post("/rag/ingest", response_model=RAGIngestResponse)
