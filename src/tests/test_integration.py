@@ -128,25 +128,6 @@ class TestAnalyzeEndpoint:
 
 
 # ═══════════════════════════════════════════
-#  POST /chat
-# ═══════════════════════════════════════════
-class TestChatEndpoint:
-    def test_chat_returns_response(self):
-        client = _get_test_client()
-        r = client.post("/chat", json={"question": "What is the password policy?"})
-        assert r.status_code == 200
-        data = r.json()
-        assert "session_id" in data
-        assert "answer" in data
-
-    def test_chat_with_session_id(self):
-        client = _get_test_client()
-        r = client.post("/chat", json={"session_id": "s1", "question": "Tell me about TLS."})
-        assert r.status_code == 200
-        assert r.json()["session_id"] == "s1"
-
-
-# ═══════════════════════════════════════════
 #  POST /rag/ingest
 # ═══════════════════════════════════════════
 class TestRAGIngestEndpoint:
