@@ -7,9 +7,10 @@
             "request": "launch",
             "module": "uvicorn",
             "args": ["main:app", "--reload", "--port", "8000"],
-            "cwd": "${workspaceFolder}/backend",
+            "cwd": "${workspaceFolder}/src/backend/analyzer",
             "python": "/opt/anaconda3/bin/python",
             "env": {
+                "PYTHONPATH": "${workspaceFolder}/src/backend",
                 "OLLAMA_BASE_URL": "http://127.0.0.1:11434"
             },
             "console": "integratedTerminal"
@@ -19,17 +20,8 @@
             "type": "debugpy",
             "request": "launch",
             "module": "streamlit",
-            "args": ["run", "app.py"],
-            "cwd": "${workspaceFolder}/frontend",
-            "python": "/opt/anaconda3/bin/python",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Debug Analyzer Script",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/backend/debug_test.py",
-            "cwd": "${workspaceFolder}/backend",
+            "args": ["run", "app.py", "--server.port", "8501"],
+            "cwd": "${workspaceFolder}/src/frontend",
             "python": "/opt/anaconda3/bin/python",
             "console": "integratedTerminal"
         }

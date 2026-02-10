@@ -127,15 +127,15 @@ def _analyze_single_question(client: OllamaClient, question: str, context: str) 
         data = _parse_llm_json(raw)
 
         # Extract fields (no grounding)
-        state = data.get("compliance_state") or "Partially Compliant"
+        state = data.get("compliance_state") or "Non-Compliant"
 
-        conf_raw = data.get("confidence", 60)
+        conf_raw = data.get("confidence", 0)
         if isinstance(conf_raw, (int, float)):
             conf = int(conf_raw)
         else:
             # Accept "71.4%" or "(5/7)*100 = 71.4" forms
             nums = re.findall(r"[\d.]+", str(conf_raw))
-            conf = int(float(nums[-1])) if nums else 60
+            conf = int(float(nums[-1])) if nums else 0
 
         quotes = data.get("relevant_quotes", []) or []
         if isinstance(quotes, str):
